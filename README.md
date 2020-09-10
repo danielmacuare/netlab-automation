@@ -13,7 +13,7 @@ The basic topology is shown below.
         - Open your terminal
         - Install Hombrew `/bin/bash -c "$(curl -fsSL`
         - Install Virtualbox with homembrew-cask `brew cask install virtualbox`
-        - Install Vagrant with homembrew-cask `brew cask install vagrant'
+        - Install Vagrant with homembrew-cask `brew cask install vagrant`
 
 ## How do I start?
 - Clone this repo `https://github.com/danielmacuare/netlab-automation.git`
