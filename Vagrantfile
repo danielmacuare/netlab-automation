@@ -1,11 +1,12 @@
 Vagrant.configure("2") do |config|
 config.vm.define "leaf01" do |leaf01|
-leaf01.vm.box = "CumulusCommunity/cumulus-vx"
+    leaf01.vm.box = "CumulusCommunity/cumulus-vx"
     leaf01.vm.network "private_network", virtualbox__intnet: "PP11", auto_config: false  # spine01 <--> leaf01
     leaf01.vm.network "private_network", virtualbox__intnet: "PP21", auto_config: false  # spine02 <--> leaf01
     leaf01.vm.network "private_network", virtualbox__intnet: "PP101", auto_config: false  # leaf01 <--> server01
-    leaf01.vm.network :forwarded_port, guest: 22, host: 2201, id: "ssh"
+    leaf01.vm.network :forwarded_port, guest: 22, host: 2201, id: "ssh" # MGT Eth0
     leaf01.vm.provider "virtualbox" do |vbox|
+        vbox.name = "CumulusVX - Leaf01"
         vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc4', 'allow-vms']
@@ -16,8 +17,9 @@ config.vm.define "leaf02" do |leaf02|
     leaf02.vm.network "private_network", virtualbox__intnet: "PP12", auto_config: false  # spine01 <--> leaf02
     leaf02.vm.network "private_network", virtualbox__intnet: "PP22", auto_config: false  # spine02 <--> leaf02
     leaf02.vm.network "private_network", virtualbox__intnet: "PP201", auto_config: false  # leaf02 <--> server01
-    leaf02.vm.network :forwarded_port, guest: 22, host: 2202, id: "ssh"
+    leaf02.vm.network :forwarded_port, guest: 22, host: 2202, id: "ssh" # MGTM Eth0
     leaf02.vm.provider "virtualbox" do |vbox|
+        vbox.name = "CumulusVX - Leaf02"
         vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc4', 'allow-vms']
@@ -28,8 +30,9 @@ config.vm.define "leaf03" do |leaf03|
     leaf03.vm.network "private_network", virtualbox__intnet: "PP13", auto_config: false  # spine01 <--> leaf03
     leaf03.vm.network "private_network", virtualbox__intnet: "PP23", auto_config: false  # spine02 <--> leaf03
     leaf03.vm.network "private_network", virtualbox__intnet: "PP302", auto_config: false  # leaf03 <--> server02
-    leaf03.vm.network :forwarded_port, guest: 22, host: 2203, id: "ssh"
+    leaf03.vm.network :forwarded_port, guest: 22, host: 2203, id: "ssh" # MGTM Eth0
     leaf03.vm.provider "virtualbox" do |vbox|
+        vbox.name = "CumulusVX - Leaf03"
         vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc4', 'allow-vms']
@@ -40,8 +43,9 @@ config.vm.define "leaf04" do |leaf04|
     leaf04.vm.network "private_network", virtualbox__intnet: "PP14", auto_config: false  # spine01 <--> leaf04
     leaf04.vm.network "private_network", virtualbox__intnet: "PP24", auto_config: false  # spine02 <--> leaf04 
     leaf04.vm.network "private_network", virtualbox__intnet: "PP402", auto_config: false  # leaf04 <--> server02 
-    leaf04.vm.network :forwarded_port, guest: 22, host: 2204, id: "ssh"
+    leaf04.vm.network :forwarded_port, guest: 22, host: 2204, id: "ssh" # MGTM Eth0
     leaf04.vm.provider "virtualbox" do |vbox|
+        vbox.name = "CumulusVX - Leaf04"
         vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc4', 'allow-vms']
@@ -53,8 +57,9 @@ config.vm.define "spine01" do |spine01|
     spine01.vm.network "private_network", virtualbox__intnet: "PP12", auto_config: false  # spine01 <--> leaf02
     spine01.vm.network "private_network", virtualbox__intnet: "PP13", auto_config: false  # spine01 <--> leaf03
     spine01.vm.network "private_network", virtualbox__intnet: "PP14", auto_config: false  # spine01 <--> leaf04
-    spine01.vm.network :forwarded_port, guest: 22, host: 2101, id: "ssh"
+    spine01.vm.network :forwarded_port, guest: 22, host: 2101, id: "ssh" # MGTM Eth0
     spine01.vm.provider "virtualbox" do |vbox|
+        vbox.name = "CumulusVX - Spine01"
         vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc4', 'allow-vms']
@@ -68,7 +73,8 @@ config.vm.define "spine02" do |spine02|
     spine02.vm.network "private_network", virtualbox__intnet: "PP23", auto_config: false  # spine02 <--> leaf03 
     spine02.vm.network "private_network", virtualbox__intnet: "PP24", auto_config: false  # spine02 <--> leaf04
     spine02.vm.provider "virtualbox" do |vbox|
-    spine02.vm.network :forwarded_port, guest: 22, host: 2102, id: "ssh"
+    spine02.vm.network :forwarded_port, guest: 22, host: 2102, id: "ssh" # MGTM Eth0
+        vbox.name = "CumulusVX - Spine02"
         vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc4', 'allow-vms']
@@ -78,22 +84,22 @@ end
 
 config.vm.define "server01" do |server01|
     server01.vm.box = "generic/ubuntu1804"
-    server01.vm.hostname = "server-01"
-    server01.vm.network "private_network", virtualbox__intnet: "PP101", ip: "10.2.2.17/31"  # leaf01 <--> server01
-    server01.vm.network "private_network", virtualbox__intnet: "PP201", ip: "10.2.2.19/31"   # leaf02 <--> server01
+    server01.vm.network "private_network", virtualbox__intnet: "PP101", ip: "10.2.2.17", netmask: '255.255.255.254'  # leaf01 <--> server01
+    server01.vm.network "private_network", virtualbox__intnet: "PP201", ip: "10.2.2.19", netmask: '255.255.255.254'   # leaf02 <--> server01
     server01.vm.provider "virtualbox" do |vbox|
-    server01.vm.network :forwarded_port, guest: 22, host: 2301, id: "ssh"
+    server01.vm.network :forwarded_port, guest: 22, host: 2301, id: "ssh" # MGMT Eth0
+        vbox.name = "Ubuntu18.04 - Server1"
         vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
     end
 end    
 config.vm.define "server02" do |server02|
     server02.vm.box = "generic/ubuntu1804"
-    server02.vm.hostname = "server-02"
-    server02.vm.network "private_network", virtualbox__intnet: "PP302", ip: "10.2.2.21/31"  # leaf03 <--> server02
-    server02.vm.network "private_network", virtualbox__intnet: "PP402", ip: "10.2.2.23/31"  # leaf04 <--> server02
+    server02.vm.network "private_network", virtualbox__intnet: "PP302", ip: "10.2.2.21", netmask: '255.255.255.254'   # leaf03 <--> server02
+    server02.vm.network "private_network", virtualbox__intnet: "PP402", ip: "10.2.2.23", netmask: '255.255.255.254'   # leaf04 <--> server02
     server02.vm.provider "virtualbox" do |vbox|
-    server02.vm.network :forwarded_port, guest: 22, host: 2302, id: "ssh"
+    server02.vm.network :forwarded_port, guest: 22, host: 2302, id: "ssh" # MGTM Eth0
+        vbox.name = "Ubuntu18.04 - Server2"
         vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
     end
