@@ -104,4 +104,12 @@ config.vm.define "server02" do |server02|
         vbox.customize ['modifyvm', :id, '--nicpromisc3', 'allow-vms']
     end
 end    
+config.vm.define "auto01" do |auto01|
+    auto01.vm.box = "generic/ubuntu1804"
+    auto01.vm.network "private_network", virtualbox__intnet: "mgmt-network", ip: "10.2.3.200", netmask: '255.255.255.0' 
+    auto01.vm.provider "virtualbox" do |vbox|
+        vbox.name = "Ubuntu18.04 - Automation Server"
+        vbox.customize ['modifyvm', :id, '--nicpromisc2', 'allow-vms']
+    end
+end    
 end
