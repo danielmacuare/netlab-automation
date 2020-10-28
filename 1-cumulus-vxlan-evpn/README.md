@@ -1,6 +1,6 @@
 # cumulus-vxlan-evpn
 
-In this lab, we will create a Spine-Leaf topology based on Nvidia/Cumulus VX. We will use a VXLAN Overlay with EVPN as the control plane to distribute MAC Addresses in our Fabric.
+In this lab, we will create a Spine-Leaf topology based on Nvidia/Cumulus VX. We will use a VXLAN Overlay with EVPN as the control plane.
 
 The idea of the lab is to learn about VXLAN/EVPN while automating the deployment of the fabric as much as possible.
 
