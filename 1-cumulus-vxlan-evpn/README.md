@@ -11,20 +11,18 @@ The basic topology is shown below.
 
 ## Requirements
 
-- [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-  - For macOS:
-    - Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-  - For Windows:
-    - You must ensure that Hyper-V is not enabled on Windows. [Disabling Hyper-V on Windows 10](https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v#resolution)
-    - Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-- [Vagrant](https://www.vagrantup.com/docs/installation)
-  - For macOS:
-    - Open your terminal
-    - Install Hombrew `/bin/bash -c "$(curl -fsSL`
-    - Install Virtualbox with homembrew-cask `brew cask install virtualbox`
-    - Install Vagrant with homembrew-cask `brew cask install vagrant`
-  - For Windows:
-    - Download and install [Vagrant](https://www.vagrantup.com/docs/installation)
+1 - vagrant
+2 - virtualbox
+
+- For macOS users:
+  - Open your terminal
+  - Install Hombrew `/bin/bash -c "$(curl -fsSL`
+  - Install `Virtualbox` with homembrew-cask `brew cask install virtualbox`
+  - Install `Vagrant` with homembrew-cask `brew cask install vagrant`
+- For Windows:
+  - You must ensure that `Hyper-V` is not enabled on Windows. [Disabling Hyper-V on Windows 10](https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v#resolution)
+  - Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+  - Download and install [Vagrant](https://www.vagrantup.com/docs/installation)
 
 ## How do I start?
 
