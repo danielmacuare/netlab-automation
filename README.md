@@ -13,4 +13,4 @@ The requirements for each topology will be found inside the folder.
 ## How do I start?
 
 - Clone this repo `https://github.com/danielmacuare/netlab-automation.git`
-- Get into any of the labs `cd netlab-automation/cumulus-vxlan-evpn`
+- Get into any of the labs `cd netlab-automation/1-cumulus-vxlan-evpn`
