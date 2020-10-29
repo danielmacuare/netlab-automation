@@ -18,9 +18,16 @@ The basic topology is shown below.
 
 - **For macOS users**:
   - Open your terminal
-  - Install Hombrew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
-  - Install `Virtualbox` with homembrew-cask `brew cask install virtualbox`
-  - Install `Vagrant` with homembrew-cask `brew cask install vagrant`
+  - Install Hombrew
+  - Install `Virtualbox` with homembrew-cask
+  - Install `Vagrant` with homembrew-cask
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+brew cask install virtualbox
+brew cask install vagrant
+```
+
 - **For Windows users**:
   - You must ensure that `Hyper-V` is not enabled on Windows. [Disabling Hyper-V on Windows 10](https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v#resolution)
   - Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
