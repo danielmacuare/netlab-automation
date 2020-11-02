@@ -18,7 +18,6 @@ Vagrant.configure("2") do |config|
     end
     config.vm.define "leaf02" do |leaf02|
         leaf02.vm.box = "CumulusCommunity/cumulus-vx"
-        leaf02.vm.box_version = "4.2.0"
         leaf02.vm.network "private_network", virtualbox__intnet: "mgmt-network", auto_config: false 
         leaf02.vm.network "private_network", virtualbox__intnet: "PP12", auto_config: false  # spine01 <--> leaf02
         leaf02.vm.network "private_network", virtualbox__intnet: "PP22", auto_config: false  # spine02 <--> leaf02
